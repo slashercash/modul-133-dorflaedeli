@@ -1,0 +1,8 @@
+{
+  "name": "dorflaedeli",
+  "version": "0.1.0",
+  "scripts": {
+    "install:client": "cd development/client && npm install",
+    "build:client": "cd development/client && npm run build"
+  }
+}
