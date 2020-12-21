@@ -1,0 +1,17 @@
+{
+  "name": "dorflaedeli-server",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "tsc --build"
+  },
+  "dependencies": {
+    "@types/cors": "^2.8.9",
+    "@types/express": "^4.17.9",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  }
+}

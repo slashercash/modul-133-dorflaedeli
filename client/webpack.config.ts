@@ -19,10 +19,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
+      favicon: 'src/favicon.ico',
     }),
   ],
   output: {
-    path: path.resolve(__dirname, '../../production/client'),
+    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
   },
 };
