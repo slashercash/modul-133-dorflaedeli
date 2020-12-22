@@ -1,0 +1,12 @@
+{
+  "name": "dorflaedeli-product",
+  "version": "0.1.0",
+  "types": "lib/index.d.ts",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "tsc"
+  },
+  "dependencies": {
+    "typescript": "^4.1.3"
+  }
+}

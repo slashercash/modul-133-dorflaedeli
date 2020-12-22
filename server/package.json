@@ -8,6 +8,7 @@
     "@types/cors": "^2.8.9",
     "@types/express": "^4.17.9",
     "cors": "^2.8.5",
+    "dorflaedeli-product": "file:../shared-classes/dorflaedeli-product",
     "express": "^4.17.1",
     "path": "^0.12.7"
   },
