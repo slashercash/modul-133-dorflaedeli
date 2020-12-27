@@ -2,6 +2,7 @@ import React from 'react';
 import Product from 'dorflaedeli-product';
 import Api from '../../../api/Api';
 import UiProductStyle from './UiProductStyle';
+import { Link } from 'react-router-dom';
 
 interface IUiProduct {
   product: Product;
@@ -15,12 +16,16 @@ const UiProduct = ({ product }: IUiProduct) => {
   return (
     <React.Fragment>
       <UiProductStyle>
-        <img src={imageUrl} />
-        <div className="product-name">{product.productName}</div>
-        <div className="product-price">
-          <div className="special">{specialOffer}</div>
-          <div className="normal">{normalPrice}</div>
-        </div>
+        <Link to={'/product/' + product.id}>
+          <div className="product">
+            <img src={imageUrl} />
+            <div className="product-name">{product.productName}</div>
+            <div className="product-price">
+              <div className="special">{specialOffer}</div>
+              <div className="normal">{normalPrice}</div>
+            </div>
+          </div>
+        </Link>
       </UiProductStyle>
     </React.Fragment>
   );

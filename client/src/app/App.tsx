@@ -3,6 +3,7 @@ import AppStyle from './AppStyle';
 import HeaderBar from './headerBar/HeaderBar';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Home from './pages/home/Home';
+import ProductOverview from './pages/productoverview/ProductOverview';
 import Cart from './pages/cart/Cart';
 
 const App = () => (
@@ -15,6 +16,7 @@ const App = () => (
           <Redirect to="/home" />
         </Route>
         <Route path="/home" component={Home} />
+        <Route path="/product/:id" component={ProductOverview} />
         <Route path="/cart" component={Cart} />
       </Switch>
     </Router>

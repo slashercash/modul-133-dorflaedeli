@@ -1,9 +1,20 @@
 import styled from 'styled-components';
 
 const UiProductStyle = styled.div`
-  border: solid 3px #6d963b;
-  border-radius: 15px;
-  padding: 10px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .product {
+    border: solid 3px #6d963b;
+    border-radius: 15px;
+    padding: 10px;
+
+    &:hover {
+      border-color: orange;
+    }
+  }
 
   img {
     width: 100%;
