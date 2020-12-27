@@ -9,6 +9,7 @@ let products: Product[] = Data.products;
 const app: Express = express();
 app.use(cors());
 app.use(express.static(path.join(__dirname, '../../client/build')));
+app.use(express.static(path.join(__dirname, './data/pictures')));
 
 app
   .get('/products', (_: Request, res: Response) => {
