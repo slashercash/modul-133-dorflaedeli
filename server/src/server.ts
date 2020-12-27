@@ -12,10 +12,10 @@ app.use(express.static(path.join(__dirname, '../../client/build')));
 app.use(express.static(path.join(__dirname, './data/pictures')));
 
 app
-  .get('/products', (_: Request, res: Response) => {
+  .get('/api/products', (_: Request, res: Response) => {
     res.send(products);
   })
-  .get('/products/:id', (req: Request, res: Response) => {
+  .get('/api/products/:id', (req: Request, res: Response) => {
     const id: string = req.params.id;
     const product = products.find((product) => product.id === id);
     res.send(product);

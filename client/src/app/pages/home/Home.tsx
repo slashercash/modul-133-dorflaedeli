@@ -7,11 +7,12 @@ import UiProduct from './uiproduct/UiProduct';
 
 const Home = () => {
   const [products, setProducts] = useState(new Array<Product>());
-  const isMounted = useRef<boolean>(true);
+  const isMounted = useRef<boolean | null>(null);
 
   useEffect(() => {
+    isMounted.current = true;
     Api.getProducts().then((products) => {
-      if (isMounted) setProducts(products);
+      if (isMounted.current) setProducts(products);
     });
     return () => {
       isMounted.current = false;

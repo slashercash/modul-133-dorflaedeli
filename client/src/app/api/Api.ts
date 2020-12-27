@@ -7,7 +7,7 @@ const axiosInstance = axios.create({ baseURL });
 
 class Api {
   static getProducts = async (): Promise<Product[]> => {
-    const { data: iProducts } = await axiosInstance.get<IProduct[]>('/products');
+    const { data: iProducts } = await axiosInstance.get<IProduct[]>('/api/products');
     const products = new Array<Product>();
     iProducts.forEach((rawProduct: IProduct) => {
       products.push(new Product(rawProduct));
@@ -16,7 +16,7 @@ class Api {
   };
 
   static getProduct = async (productId: string): Promise<Product> => {
-    const { data: iProduct } = await axiosInstance.get<IProduct>('/products/' + productId);
+    const { data: iProduct } = await axiosInstance.get<IProduct>('/api/products/' + productId);
     const product = new Product(iProduct);
     return product;
   };

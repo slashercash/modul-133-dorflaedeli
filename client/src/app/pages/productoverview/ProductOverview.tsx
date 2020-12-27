@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Api from '../../api/Api';
 import Product from 'dorflaedeli-product';
+import ProductoverviewStyle from './ProductoverviewStyle';
 
 interface IProductOverview {
   match: {
@@ -12,20 +13,32 @@ interface IProductOverview {
 
 const ProductOverview = ({ match }: IProductOverview) => {
   const [product, setProduct] = useState((): Product | undefined => undefined);
-  const isMounted = useRef<boolean>(true);
+  const isMounted = useRef<boolean | null>(null);
 
   useEffect(() => {
+    isMounted.current = true;
     Api.getProduct(match.params.id).then((product) => {
-      if (isMounted) setProduct(product);
+      if (isMounted.current) setProduct(product);
     });
     return () => {
       isMounted.current = false;
     };
   }, []);
 
+  const imageUrl: string | undefined = product ? Api.getImageUrl(product.imageName) : undefined;
+
   return (
     <React.Fragment>
-      <span>{JSON.stringify(product)}</span>
+      <ProductoverviewStyle>
+        <img src={imageUrl} />
+        <div>
+          <div>
+            <h1 className="product-name">{product?.productName}</h1>
+            <p>{product?.description}</p>
+            <button>Warenkorb</button>
+          </div>
+        </div>
+      </ProductoverviewStyle>
     </React.Fragment>
   );
 };
