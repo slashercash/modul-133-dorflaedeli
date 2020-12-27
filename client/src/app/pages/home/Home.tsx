@@ -18,9 +18,7 @@ const Home = () => {
     };
   }, []);
 
-  const uiProducts = products.map((product) => (
-    <UiProduct key={products.findIndex((x) => x.id === product.id)} product={product} />
-  ));
+  const uiProducts = products.map((product) => <UiProduct key={product.id} product={product} />);
 
   return (
     <React.Fragment>
