@@ -15,6 +15,11 @@ app
   .get('/products', (_: Request, res: Response) => {
     res.send(products);
   })
+  .get('/products/:id', (req: Request, res: Response) => {
+    const id: string = req.params.id;
+    const product = products.find((product) => product.id === id);
+    res.send(product);
+  })
   .get('*', (_: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '../../client/build/index.html'));
   });
