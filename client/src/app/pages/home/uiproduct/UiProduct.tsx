@@ -16,7 +16,7 @@ const UiProduct = ({ product }: IUiProduct) => {
   return (
     <React.Fragment>
       <UiProductStyle>
-        <Link to={'/product/' + product.id}>
+        <Link to={'/products/' + product.id}>
           <div className="product">
             <img src={imageUrl} />
             <div className="product-name">{product.productName}</div>

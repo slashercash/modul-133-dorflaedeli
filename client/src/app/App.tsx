@@ -16,7 +16,7 @@ const App = () => (
           <Redirect to="/home" />
         </Route>
         <Route path="/home" component={Home} />
-        <Route path="/product/:id" component={ProductOverview} />
+        <Route path="/products/:id" component={ProductOverview} />
         <Route path="/cart" component={Cart} />
       </Switch>
     </Router>

@@ -7,12 +7,18 @@ const axiosInstance = axios.create({ baseURL });
 
 class Api {
   static getProducts = async (): Promise<Product[]> => {
-    const response = await axiosInstance.get('/products');
+    const { data: iProducts } = await axiosInstance.get<IProduct[]>('/products');
     const products = new Array<Product>();
-    response.data.forEach((rawProduct: IProduct) => {
+    iProducts.forEach((rawProduct: IProduct) => {
       products.push(new Product(rawProduct));
     });
     return products;
+  };
+
+  static getProduct = async (productId: string): Promise<Product> => {
+    const { data: iProduct } = await axiosInstance.get<IProduct>('/products/' + productId);
+    const product = new Product(iProduct);
+    return product;
   };
 
   static getImageUrl = (imageName: string) => baseURL + '/' + imageName;
