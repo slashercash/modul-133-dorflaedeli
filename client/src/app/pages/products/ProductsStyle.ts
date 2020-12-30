@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const HomeStyle = styled.div`
+const ProductsStyle = styled.div`
   .products {
     display: grid;
     grid-gap: 10px;
@@ -25,4 +25,4 @@ const HomeStyle = styled.div`
   }
 `;
 
-export default HomeStyle;
+export default ProductsStyle;

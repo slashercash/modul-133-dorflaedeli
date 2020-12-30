@@ -6,7 +6,7 @@ const HeaderBar = () => {
   return (
     <React.Fragment>
       <HeaderBarStyle>
-        <Link to="/home">
+        <Link to="/products">
           <div className="headerbar-left">DAVE´S</div>
           <div className="headerbar-right">DORFLAEDELI</div>
         </Link>

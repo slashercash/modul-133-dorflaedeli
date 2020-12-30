@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import HomeStyle from './HomeStyle';
+import ProductsStyle from './ProductsStyle';
 import Api from '../../api/Api';
 import Product from 'dorflaedeli-product';
 import UiProduct from './uiproduct/UiProduct';
 
-const Home = () => {
+const Products = () => {
   const [products, setProducts] = useState(new Array<Product>());
   const isMounted = useRef<boolean | null>(null);
 
@@ -23,13 +23,12 @@ const Home = () => {
 
   return (
     <React.Fragment>
-      <HomeStyle>
-        <div>Home</div>
+      <ProductsStyle>
         <Link to="/cart">Zum Warenkorb</Link>
         <div className="products">{uiProducts}</div>
-      </HomeStyle>
+      </ProductsStyle>
     </React.Fragment>
   );
 };
 
-export default Home;
+export default Products;
