@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Api from '../../api/Api';
+import Api from '../../shared/api/Api';
 import Product from 'dorflaedeli-product';
 import ProductoverviewStyle from './ProductoverviewStyle';
+import ButtonLink from '../../shared/components/buttonLink/ButtonLink';
 
 interface IProductOverview {
   match: {
@@ -30,6 +31,9 @@ const ProductOverview = ({ match }: IProductOverview) => {
   return (
     <React.Fragment>
       <ProductoverviewStyle>
+        <div className="top-row">
+          <ButtonLink to="/cart" buttonText="Zum Warenkorb" />
+        </div>
         <img src={imageUrl} />
         <div>
           <div>

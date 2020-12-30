@@ -4,6 +4,14 @@ const ProductOverviewStyle = styled.div`
   display: flex;
   flex-wrap: wrap;
 
+  .top-row {
+    width: 100%;
+
+    .button-link {
+      margin: 15px 10px 0 auto;
+    }
+  }
+
   > img,
   > div {
     width: 50%;

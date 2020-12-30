@@ -1,6 +1,6 @@
 import React from 'react';
 import Product from 'dorflaedeli-product';
-import Api from '../../../api/Api';
+import Api from '../../../shared/api/Api';
 import UiProductStyle from './UiProductStyle';
 import { Link } from 'react-router-dom';
 

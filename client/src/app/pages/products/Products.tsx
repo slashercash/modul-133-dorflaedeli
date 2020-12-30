@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import ProductsStyle from './ProductsStyle';
-import Api from '../../api/Api';
+import Api from '../../shared/api/Api';
 import Product from 'dorflaedeli-product';
 import UiProduct from './uiproduct/UiProduct';
+import ButtonLink from '../../shared/components/buttonLink/ButtonLink';
 
 const Products = () => {
   const [products, setProducts] = useState(new Array<Product>());
@@ -24,7 +24,7 @@ const Products = () => {
   return (
     <React.Fragment>
       <ProductsStyle>
-        <Link to="/cart">Zum Warenkorb</Link>
+        <ButtonLink to="/cart" buttonText="Zum Warenkorb" />
         <div className="products">{uiProducts}</div>
       </ProductsStyle>
     </React.Fragment>
