@@ -36,13 +36,15 @@ export const parseCart = (json: any): Cart | undefined => {
     let cartElements: CartElement[] = new Array<CartElement>();
 
     iCardElements.forEach((iCartElement: ICartElement) => {
-      const cardElement: CartElement = new CartElement({
-        productId: iCartElement.productId as string,
-        count: iCartElement.count as number,
-      });
-      if (typeof cardElement.productId !== 'string' || typeof cardElement.count !== 'number') {
+      if (typeof iCartElement.productId !== 'string' || typeof iCartElement.count !== 'number') {
         throw BreakException;
       }
+
+      const cardElement: CartElement = new CartElement({
+        productId: iCartElement.productId,
+        count: iCartElement.count,
+      });
+
       cartElements.push(cardElement);
     });
 

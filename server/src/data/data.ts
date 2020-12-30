@@ -1,14 +1,10 @@
 import rawProducts from './products.json';
-import Product, { IProduct } from 'dorflaedeli-product';
+import Product, { parseProducts } from 'dorflaedeli-product';
 
-const products = new Array<Product>();
-
-rawProducts.forEach((rawProduct: IProduct) => {
-  products.push(new Product(rawProduct));
-});
+const products: Product[] | undefined = parseProducts(rawProducts);
 
 class Data {
-  static products = products;
+  static products: Product[] = products ? products : new Array<Product>();
 }
 
 export default Data;

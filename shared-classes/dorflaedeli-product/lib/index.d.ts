@@ -15,3 +15,5 @@ export default class Product implements IProduct {
     description: string;
     constructor(product: IProduct);
 }
+export declare const parseProduct: (json: any) => Product | undefined;
+export declare const parseProducts: (json: any) => Product[] | undefined;

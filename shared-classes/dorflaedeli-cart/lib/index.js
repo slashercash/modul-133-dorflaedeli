@@ -25,13 +25,13 @@ var parseCart = function (json) {
         }
         var cartElements_1 = new Array();
         iCardElements.forEach(function (iCartElement) {
+            if (typeof iCartElement.productId !== 'string' || typeof iCartElement.count !== 'number') {
+                throw BreakException;
+            }
             var cardElement = new CartElement({
                 productId: iCartElement.productId,
                 count: iCartElement.count
             });
-            if (typeof cardElement.productId !== 'string' || typeof cardElement.count !== 'number') {
-                throw BreakException;
-            }
             cartElements_1.push(cardElement);
         });
         var icart = { elements: cartElements_1 };

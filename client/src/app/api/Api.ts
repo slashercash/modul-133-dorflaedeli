@@ -1,24 +1,19 @@
 import axios from 'axios';
-import Product, { IProduct } from 'dorflaedeli-product';
+import Product, { parseProduct, parseProducts } from 'dorflaedeli-product';
 
 const baseURL = 'http://localhost:8080';
 
 const axiosInstance = axios.create({ baseURL });
 
 class Api {
-  static getProducts = async (): Promise<Product[]> => {
-    const { data: iProducts } = await axiosInstance.get<IProduct[]>('/api/products');
-    const products = new Array<Product>();
-    iProducts.forEach((rawProduct: IProduct) => {
-      products.push(new Product(rawProduct));
-    });
-    return products;
+  static getProducts = async (): Promise<Product[] | undefined> => {
+    const response = await axiosInstance.get('/api/products');
+    return parseProducts(response.data);
   };
 
-  static getProduct = async (productId: string): Promise<Product> => {
-    const { data: iProduct } = await axiosInstance.get<IProduct>('/api/products/' + productId);
-    const product = new Product(iProduct);
-    return product;
+  static getProduct = async (productId: string): Promise<Product | undefined> => {
+    const response = await axiosInstance.get('/api/products/' + productId);
+    return parseProduct(response.data);
   };
 
   static getImageUrl = (imageName: string) => baseURL + '/' + imageName;
