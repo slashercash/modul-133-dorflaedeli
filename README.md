@@ -29,5 +29,5 @@ If you want to develop on the client, you can make advantage of autorefreshing y
 
 1. Install all dependencies: `npm run install:all`
 2. At least build your server: `npm run build:server`
-3. start your application in dev-mode: `npm run dev:client`
-4. your browser should pop up on the port where your app is served.
+3. Start your application in dev-mode: `npm run dev:client`
+4. Your browser should pop up automatically on http://localhost:8090/.

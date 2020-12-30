@@ -2,9 +2,9 @@ import React from 'react';
 import AppStyle from './AppStyle';
 import HeaderBar from './headerBar/HeaderBar';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import Products from './pages/products/Products';
-import ProductOverview from './pages/productoverview/ProductOverview';
-import Cart from './pages/cart/Cart';
+import ProductsPage from './pages/productspage/ProductsPage';
+import ProductPage from './pages/productpage/ProductPage';
+import CartPage from './pages/cartpage/CartPage';
 
 const App = () => (
   <React.Fragment>
@@ -15,9 +15,9 @@ const App = () => (
         <Route exact path="/">
           <Redirect to="/products" />
         </Route>
-        <Route exact path="/products" component={Products} />
-        <Route exact path="/products/:id" component={ProductOverview} />
-        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/products" component={ProductsPage} />
+        <Route exact path="/products/:id" component={ProductPage} />
+        <Route exact path="/cart" component={CartPage} />
       </Switch>
     </Router>
   </React.Fragment>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ProductsStyle = styled.div`
+const ProductsPageStyle = styled.div`
   .button-link {
     margin: 15px 10px 15px auto;
   }
@@ -29,4 +29,4 @@ const ProductsStyle = styled.div`
   }
 `;
 
-export default ProductsStyle;
+export default ProductsPageStyle;

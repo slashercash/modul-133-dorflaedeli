@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ProductsStyle from './ProductsStyle';
+import ProductsPageStyle from './ProductsPageStyle';
 import Api from '../../shared/api/Api';
 import Product from 'dorflaedeli-product';
 import UiProduct from './uiproduct/UiProduct';
-import ButtonLink from '../../shared/components/buttonLink/ButtonLink';
+import ButtonLink from '../../shared/components/buttonlink/ButtonLink';
 
-const Products = () => {
+const ProductsPage = () => {
   const [products, setProducts] = useState(new Array<Product>());
   const isMounted = useRef<boolean | null>(null);
 
@@ -23,12 +23,12 @@ const Products = () => {
 
   return (
     <React.Fragment>
-      <ProductsStyle>
+      <ProductsPageStyle>
         <ButtonLink to="/cart" buttonText="Zum Warenkorb" />
         <div className="products">{uiProducts}</div>
-      </ProductsStyle>
+      </ProductsPageStyle>
     </React.Fragment>
   );
 };
 
-export default Products;
+export default ProductsPage;

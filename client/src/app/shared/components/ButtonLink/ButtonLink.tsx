@@ -7,14 +7,12 @@ export interface IButtonLink {
   buttonText: string;
 }
 
-const ButtonLink = ({ to, buttonText }: IButtonLink) => {
-  return (
-    <React.Fragment>
-      <ButtonLinkStyle className="button-link">
-        <Link to={to}>{buttonText}</Link>
-      </ButtonLinkStyle>
-    </React.Fragment>
-  );
-};
+const ButtonLink = ({ to, buttonText }: IButtonLink) => (
+  <React.Fragment>
+    <ButtonLinkStyle className="button-link">
+      <Link to={to}>{buttonText}</Link>
+    </ButtonLinkStyle>
+  </React.Fragment>
+);
 
 export default ButtonLink;

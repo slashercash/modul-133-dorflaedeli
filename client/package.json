@@ -11,6 +11,7 @@
     "@types/react-router-dom": "^5.1.6",
     "@types/styled-components": "^5.1.7",
     "axios": "^0.21.1",
+    "dorflaedeli-cart": "file:../shared-classes/dorflaedeli-cart",
     "dorflaedeli-product": "file:../shared-classes/dorflaedeli-product",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

@@ -11,15 +11,17 @@ declare module 'express-session' {
   }
 }
 
+const prodPort: number = 8080;
+const devPort: number = 8090;
+
 const products: Product[] = Data.products;
 
 const app: Express = express();
-
-app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../../client/build')));
 app.use(express.static(path.join(__dirname, './data/pictures')));
 app.use(session({ secret: 'd0rflæde|1', cookie: { maxAge: 86400000 }, resave: true, saveUninitialized: true }));
+app.use(cors({ credentials: true, origin: ['http://localhost:' + prodPort, 'http://localhost:' + devPort] }));
 
 app
   .get('/api/products', (_: Request, res: Response) => {
@@ -53,4 +55,4 @@ app
     res.sendFile(path.join(__dirname, '../../client/build/index.html'));
   });
 
-app.listen(8080, () => console.log('Server running on port 8080'));
+app.listen(prodPort, () => console.log('Server running on port ' + prodPort));

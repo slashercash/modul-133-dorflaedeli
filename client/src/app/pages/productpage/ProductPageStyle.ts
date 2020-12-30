@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ProductOverviewStyle = styled.div`
+const ProductPageStyle = styled.div`
   display: flex;
   flex-wrap: wrap;
 
@@ -42,4 +42,4 @@ const ProductOverviewStyle = styled.div`
   }
 `;
 
-export default ProductOverviewStyle;
+export default ProductPageStyle;
