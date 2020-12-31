@@ -2,7 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import path from 'path';
 import Data from './data/data';
-import Cart, { parseCart } from 'dorflaedeli-cart';
+import Cart, { CartElement } from 'dorflaedeli-cart';
 import Product from 'dorflaedeli-product';
 import session from 'express-session';
 declare module 'express-session' {
@@ -37,20 +37,52 @@ app
     }
   })
   .get('/api/cart', (req: Request, res: Response) => {
-    if (!req.session.cart) {
-      req.session.cart = new Cart();
-    }
+    if (!req.session.cart) req.session.cart = new Cart();
+    req.session.cart.elements.forEach((element: CartElement) => {
+      const product: Product = products.find((product: Product) => element.productId === product.id);
+      element.productName = product.productName;
+      element.singlePrice = product.specialOffer;
+      element.totalPrice = product.specialOffer * element.count;
+    });
+    req.session.cart.totalCartPrice = req.session.cart.elements.reduce(
+      (total: number, element: CartElement) => total + element.totalPrice,
+      0
+    );
     res.status(200).send(req.session.cart);
   })
-  .post('/api/cart', (req: Request, res: Response) => {
-    const cart: Cart | undefined = parseCart(req.body);
-    if (cart) {
-      req.session.cart = cart;
-      res.status(200).send('cart updated');
+  .put('/api/cart/:id', (req: Request, res: Response) => {
+    const id: string = req.params.id;
+    const product: Product | undefined = products.find((product) => product.id === id);
+    if (!product) res.status(400).send('no product found with id: ' + id);
+    if (!req.session.cart) req.session.cart = new Cart();
+    const index = req.session.cart.elements.findIndex((element: CartElement) => element.productId === product.id);
+    if (index >= 0) {
+      req.session.cart.elements[index].count++;
     } else {
-      res.status(400).send('bad request');
+      req.session.cart.elements.push(
+        new CartElement({
+          productId: product.id,
+          count: 1,
+        })
+      );
     }
+    res.status(200).send('cart updated');
   })
+  .delete('/api/cart/:id', (req: Request, res: Response) => {
+    const id: string = req.params.id;
+    const product: Product | undefined = products.find((product) => product.id === id);
+    if (!product) res.status(400).send('no product found with id: ' + id);
+    if (!req.session.cart) req.session.cart = new Cart();
+    const index = req.session.cart.elements.findIndex((element: CartElement) => element.productId === product.id);
+    if (index < 0) res.status(400).send('cart has no element found with id: ' + id);
+    if (req.session.cart.elements[index].count === 1) {
+      req.session.cart.elements.splice(index);
+    } else {
+      req.session.cart.elements[index].count--;
+    }
+    res.status(200).send('cart updated');
+  })
+
   .get('*', (_: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '../../client/build/index.html'));
   });

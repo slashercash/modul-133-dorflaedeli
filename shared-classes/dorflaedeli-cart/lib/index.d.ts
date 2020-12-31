@@ -1,8 +1,8 @@
 export interface ICartElement {
     productId: string;
-    productName: string;
-    singlePrice: number;
-    totalPrice: number;
+    productName?: string;
+    singlePrice?: number;
+    totalPrice?: number;
     count: number;
 }
 export declare class CartElement implements ICartElement {

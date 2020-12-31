@@ -3,10 +3,11 @@ exports.__esModule = true;
 exports.parseCart = exports.CartElement = void 0;
 var CartElement = /** @class */ (function () {
     function CartElement(iCartElement) {
+        var _a, _b, _c;
         this.productId = iCartElement.productId;
-        this.productName = iCartElement.productName;
-        this.singlePrice = iCartElement.singlePrice;
-        this.totalPrice = iCartElement.totalPrice;
+        this.productName = (_a = iCartElement.productName) !== null && _a !== void 0 ? _a : '';
+        this.singlePrice = (_b = iCartElement.singlePrice) !== null && _b !== void 0 ? _b : 0;
+        this.totalPrice = (_c = iCartElement.totalPrice) !== null && _c !== void 0 ? _c : 0;
         this.count = iCartElement.count;
     }
     return CartElement;
@@ -25,7 +26,7 @@ var parseCart = function (json) {
     try {
         var iCardElements = json.elements;
         var totalCartPrice = json.totalCartPrice;
-        if (!iCardElements || !totalCartPrice || typeof totalCartPrice !== 'number') {
+        if (!iCardElements || typeof totalCartPrice !== 'number') {
             throw BreakException;
         }
         var cartElements_1 = new Array();

@@ -25,9 +25,14 @@ class Api {
     return parseCart(response.data);
   };
 
-  static postCart = async (cart: Cart): Promise<void> => {
-    const response = await axiosInstance.post('/api/cart', cart, { withCredentials: true });
-    if (response.status !== 200) alert('error on POST /api/cart/');
+  static putCartElement = async (productId: string): Promise<void> => {
+    const response = await axiosInstance.put('/api/cart/' + productId, {}, { withCredentials: true });
+    if (response.status !== 200) alert('error on PUT /api/cart/' + productId);
+  };
+
+  static deleteCartElement = async (productId: string): Promise<void> => {
+    const response = await axiosInstance.delete('/api/cart/' + productId, { withCredentials: true });
+    if (response.status !== 200) alert('error on DELETE /api/cart/' + productId);
   };
 
   static getImageUrl = (imageName: string) => baseURL + '/' + imageName;

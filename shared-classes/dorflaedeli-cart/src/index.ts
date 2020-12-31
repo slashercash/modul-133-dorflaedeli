@@ -1,8 +1,8 @@
 export interface ICartElement {
   productId: string;
-  productName: string;
-  singlePrice: number;
-  totalPrice: number;
+  productName?: string;
+  singlePrice?: number;
+  totalPrice?: number;
   count: number;
 }
 
@@ -15,9 +15,9 @@ export class CartElement implements ICartElement {
 
   constructor(iCartElement: ICartElement) {
     this.productId = iCartElement.productId;
-    this.productName = iCartElement.productName;
-    this.singlePrice = iCartElement.singlePrice;
-    this.totalPrice = iCartElement.totalPrice;
+    this.productName = iCartElement.productName ?? '';
+    this.singlePrice = iCartElement.singlePrice ?? 0;
+    this.totalPrice = iCartElement.totalPrice ?? 0;
     this.count = iCartElement.count;
   }
 }
@@ -42,7 +42,7 @@ export const parseCart = (json: any): Cart | undefined => {
   try {
     const iCardElements: ICartElement[] = json.elements;
     const totalCartPrice: number = json.totalCartPrice;
-    if (!iCardElements || !totalCartPrice || typeof totalCartPrice !== 'number') {
+    if (!iCardElements || typeof totalCartPrice !== 'number') {
       throw BreakException;
     }
 

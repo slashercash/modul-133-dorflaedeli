@@ -13,16 +13,6 @@ const getData = async (productId: string): Promise<{ product: Product; cart: Car
   return { product, cart, imageUrl };
 };
 
-const addToCart = (cart: Cart, product: Product): Cart => {
-  const index = cart.elements.findIndex((element: CartElement) => element.productId === product.id);
-  if (index >= 0) {
-    cart.elements[index].count++;
-  } else {
-    cart.elements.push(new CartElement({ productId: product.id, count: 1 }));
-  }
-  return cart;
-};
-
 interface IProductPage {
   match: {
     params: {
@@ -65,8 +55,7 @@ const ProductPage = ({ match }: IProductPage) => {
             <Button
               buttonText="Zum Warenkorb hinzufügen"
               onClick={async () => {
-                const updatedCard = addToCart(cart, product);
-                await Api.postCart(updatedCard);
+                await Api.putCartElement(product.id);
                 setCart(await Api.getCart());
               }}
             />
