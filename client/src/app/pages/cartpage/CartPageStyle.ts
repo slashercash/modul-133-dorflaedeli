@@ -5,9 +5,27 @@ const CartPageStyle = styled.div`
     display: flex;
   }
 
+  > strong {
+    justify-content: flex-end;
+    padding: 5px 10px;
+  }
+
+  .cart-list-header {
+    color: white;
+    background-color: #6d963b;
+  }
+
+  .cart-list-row {
+    background-color: #d3dfc4;
+    &:nth-child(even) {
+      background-color: #f0f4eb;
+    }
+  }
+
   .cart-list-header,
   .cart-list-row {
     flex-wrap: wrap;
+    padding: 5px 10px;
 
     > strong,
     > span {

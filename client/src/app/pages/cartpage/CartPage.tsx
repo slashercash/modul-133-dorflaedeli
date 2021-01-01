@@ -51,6 +51,7 @@ const CartPage = () => {
           </div>
         </div>
         {cartRows}
+        <strong>CHF {cart.totalCartPrice.toFixed(2)}</strong>
       </CartPageStyle>
     </React.Fragment>
   );

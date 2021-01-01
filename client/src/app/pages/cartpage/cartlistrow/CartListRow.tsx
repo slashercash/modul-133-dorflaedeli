@@ -8,26 +8,21 @@ interface ICartListRow {
   onCountSub: () => void;
 }
 
-const CartListRow = ({ cartElement, onCountAdd, onCountSub }: ICartListRow) => {
-  const singlePrice: string = 'CHF ' + cartElement.singlePrice.toFixed(2);
-  const totalPrice: string = 'CHF ' + cartElement.totalPrice.toFixed(2);
-
-  return (
-    <React.Fragment>
-      <div className="cart-list-row">
-        <span>{cartElement.productName}</span>
+const CartListRow = ({ cartElement, onCountAdd, onCountSub }: ICartListRow) => (
+  <React.Fragment>
+    <div className="cart-list-row">
+      <span>{cartElement.productName}</span>
+      <div>
+        <span>CHF {cartElement.singlePrice.toFixed(2)}</span>
         <div>
-          <span>{singlePrice}</span>
-          <div>
-            <Button buttonText="-" onClick={onCountSub} />
-            <span>{cartElement.count}</span>
-            <Button buttonText="+" onClick={onCountAdd} />
-          </div>
-          <span>{totalPrice}</span>
+          <Button buttonText="-" onClick={onCountSub} />
+          <span>{cartElement.count}</span>
+          <Button buttonText="+" onClick={onCountAdd} />
         </div>
+        <span>CHF {cartElement.totalPrice.toFixed(2)}</span>
       </div>
-    </React.Fragment>
-  );
-};
+    </div>
+  </React.Fragment>
+);
 
 export default CartListRow;
