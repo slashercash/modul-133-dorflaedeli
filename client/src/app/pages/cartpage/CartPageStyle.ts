@@ -1,27 +1,39 @@
 import styled from 'styled-components';
 
 const CartPageStyle = styled.div`
+  * {
+    display: flex;
+  }
+
   .cart-list-header,
   .cart-list-row {
-    display: flex;
     flex-wrap: wrap;
 
     > strong,
-    span {
+    > span {
       flex: 1;
+      align-items: center;
     }
 
     > div {
       flex: 2;
-      display: flex;
       > strong,
-      span {
+      > span,
+      > div {
         flex: 1;
+        align-items: center;
         &:nth-child(2) {
-          text-align: center;
+          justify-content: center;
         }
         &:nth-child(3) {
-          text-align: right;
+          justify-content: flex-end;
+        }
+        button {
+          display: block;
+          width: 32px;
+        }
+        > span {
+          margin: 0 5px;
         }
       }
     }

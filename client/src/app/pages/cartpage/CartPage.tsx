@@ -24,7 +24,18 @@ const CartPage = () => {
   if (cart.elements.length === 0) return <h1>Ihr Warenkorb ist leer</h1>;
 
   const cartRows = cart.elements.map((cartElement: CartElement) => (
-    <CartListRow key={cartElement.productId} cartElement={cartElement} />
+    <CartListRow
+      key={cartElement.productId}
+      cartElement={cartElement}
+      onCountAdd={async () => {
+        await Api.putCartElement(cartElement.productId);
+        setCart(await Api.getCart());
+      }}
+      onCountSub={async () => {
+        await Api.deleteCartElement(cartElement.productId);
+        setCart(await Api.getCart());
+      }}
+    />
   ));
 
   return (
