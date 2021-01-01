@@ -9,9 +9,9 @@ interface IUiProduct {
 }
 
 const UiProduct = ({ product }: IUiProduct) => {
-  const imageUrl = Api.getImageUrl(product.imageName);
-  const normalPrice = 'CHF ' + product.normalPrice.toFixed(2);
-  const specialOffer = 'CHF ' + product.specialOffer.toFixed(2);
+  const imageUrl: string = Api.getImageUrl(product.imageName);
+  const normalPrice: string = 'CHF ' + product.normalPrice.toFixed(2);
+  const specialOffer: string = 'CHF ' + product.specialOffer.toFixed(2);
 
   return (
     <React.Fragment>
