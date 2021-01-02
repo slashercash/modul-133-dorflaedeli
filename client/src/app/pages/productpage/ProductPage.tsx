@@ -44,23 +44,23 @@ const ProductPage = ({ match }: IProductPage) => {
   return (
     <React.Fragment>
       <ProductPageStyle>
-        <div className="top-row">
-          <ButtonLink to="/cart" buttonText="Zum Warenkorb" />
-        </div>
-        <img src={imageUrl} />
-        <div>
+        <ButtonLink to="/cart" buttonText="Zum Warenkorb" />
+        <section>
+          <img src={imageUrl} />
           <div>
-            <h1>{product?.productName}</h1>
-            <p>{product?.description}</p>
-            <Button
-              buttonText="Zum Warenkorb hinzufügen"
-              onClick={async () => {
-                await Api.putCartElement(product.id);
-                setCart(await Api.getCart());
-              }}
-            />
+            <div>
+              <h1>{product?.productName}</h1>
+              <p>{product?.description}</p>
+              <Button
+                buttonText="Zum Warenkorb hinzufügen"
+                onClick={async () => {
+                  await Api.putCartElement(product.id);
+                  setCart(await Api.getCart());
+                }}
+              />
+            </div>
           </div>
-        </div>
+        </section>
       </ProductPageStyle>
     </React.Fragment>
   );

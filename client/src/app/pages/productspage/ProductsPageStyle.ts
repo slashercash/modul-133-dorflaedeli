@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ProductsPageStyle = styled.div`
+const ProductsPageStyle = styled.main`
   .button-link {
     margin: 15px 10px 15px auto;
   }
@@ -10,13 +10,13 @@ const ProductsPageStyle = styled.div`
     grid-gap: 10px;
   }
 
-  @media (min-width: 400px) {
+  @media (min-width: 450px) {
     .products {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  @media (min-width: 650px) {
+  @media (min-width: 700px) {
     .products {
       grid-template-columns: repeat(3, 1fr);
     }

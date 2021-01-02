@@ -10,9 +10,11 @@ const UiProductStyle = styled.div`
     border: solid 3px #6d963b;
     border-radius: 15px;
     padding: 10px;
+    box-shadow: 0 0 10px #6d963b inset;
 
     &:hover {
       border-color: orange;
+      box-shadow: 0 0 20px orange inset;
     }
   }
 

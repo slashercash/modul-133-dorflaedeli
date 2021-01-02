@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const CartPageStyle = styled.div`
+const CartPageStyle = styled.main`
   h1 {
     margin: 20px 0 20px 10px;
   }
@@ -70,7 +70,7 @@ const CartPageStyle = styled.div`
     }
   }
 
-  @media (max-width: 650px) {
+  @media (max-width: 700px) {
     thead > tr > th:nth-child(1) {
       display: none;
     }
