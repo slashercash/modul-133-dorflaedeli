@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, ChangeEvent } from 'react';
+import React, { useState, useEffect, useRef, ChangeEvent, FormEvent } from 'react';
 import Cart from 'dorflaedeli-cart';
 import Api from '../../shared/api/Api';
 import ButtonLink from '../../shared/components/buttonlink/ButtonLink';
@@ -6,7 +6,7 @@ import CheckoutPageStyle from './CheckoutPageStyle';
 
 const CheckoutPage = () => {
   const [totalCartPrice, setTotalCartPrice] = useState(0);
-  const [foreName, setForeName] = useState('');
+  const [firstName, setFirstName] = useState('');
   const [lastName, setlastName] = useState('');
   const [email, setEmail] = useState('');
   const isMounted = useRef<boolean | null>(null);
@@ -21,6 +21,20 @@ const CheckoutPage = () => {
     };
   }, []);
 
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    event.preventDefault();
+    const status: number = await Api.putPurchase(firstName, lastName, email);
+    if (status === 200) {
+      setTotalCartPrice((await Api.getCart()).totalCartPrice);
+      setFirstName('');
+      setlastName('');
+      setEmail('');
+      alert('Vielen Dank für Ihre Bestellung!');
+    } else {
+      alert('Die eingegebenen Daten wurden vom Server nicht akzeptiert.');
+    }
+  };
+
   return (
     <React.Fragment>
       <CheckoutPageStyle>
@@ -28,15 +42,15 @@ const CheckoutPage = () => {
           <h1>Bezahlen</h1>
           <ButtonLink to="/cart" buttonText={'Warenkorb: CHF ' + totalCartPrice.toFixed(2)} />
         </section>
-        <form onSubmit={() => console.log('X')}>
+        <form onSubmit={handleSubmit}>
           <div>
             <div>Vorname</div>
             <input
               required
               type="text"
               name="firstName"
-              value={foreName}
-              onChange={({ target }: ChangeEvent<HTMLInputElement>) => setForeName(target.value)}
+              value={firstName}
+              onChange={({ target }: ChangeEvent<HTMLInputElement>) => setFirstName(target.value)}
             />
           </div>
           <div>
@@ -60,7 +74,7 @@ const CheckoutPage = () => {
             />
           </div>
           <div>
-            <input type="submit" value={'Einkauf abschliessen (CHF ' + totalCartPrice + ')'} />
+            <input type="submit" disabled={totalCartPrice === 0} value={'Einkauf abschliessen (CHF ' + totalCartPrice + ')'} />
           </div>
         </form>
       </CheckoutPageStyle>

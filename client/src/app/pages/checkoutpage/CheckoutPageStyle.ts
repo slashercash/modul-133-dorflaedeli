@@ -25,11 +25,19 @@ const CheckoutPageStyle = styled.main`
           color: #6d963b;
           background-color: white;
           border-width: 2px;
+          outline: none;
 
           &:hover {
             cursor: pointer;
             color: white;
             background-color: #6d963b;
+          }
+
+          &:disabled {
+            cursor: default;
+            color: grey;
+            border-color: grey;
+            background-color: white;
           }
         }
       }

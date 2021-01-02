@@ -52,6 +52,12 @@ app
     req.session.cart = Logic.deleteCartElement(req.session.cart, index);
     res.status(200).send('cart updated');
   })
+  .put('/api/purchase', (req: Request, res: Response) => {
+    if (Logic.validatePurchase(req.body)) {
+      req.session.cart = new Cart();
+      res.status(200).send('cart cleared');
+    } else res.status(204).send('invalid credentials');
+  })
   .get('*', (_: Request, res: Response) => res.sendFile(path.join(__dirname, '../../client/build/index.html')));
 
 app.listen(prodPort, () => console.log('Server running on port ' + prodPort));

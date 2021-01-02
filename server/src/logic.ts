@@ -39,6 +39,19 @@ class Logic {
 
     return cart;
   };
+
+  static validatePurchase = (json: any) => {
+    const emailTest = new RegExp(`^\\S+@\\S+\\.\\S+$`);
+
+    return (
+      typeof json.firstName === 'string' &&
+      json.firstName.length > 0 &&
+      typeof json.lastName === 'string' &&
+      json.lastName.length > 0 &&
+      typeof json.email === 'string' &&
+      emailTest.test(json.email)
+    );
+  };
 }
 
 export default Logic;

@@ -35,6 +35,11 @@ class Api {
     if (response.status !== 200) alert('error on DELETE /api/cart/' + productId);
   };
 
+  static putPurchase = async (firstName: string, lastName: string, email: string): Promise<number> => {
+    const response = await axiosInstance.put('/api/purchase', { firstName, lastName, email }, { withCredentials: true });
+    return response.status;
+  };
+
   static getImageUrl = (imageName: string) => baseURL + '/' + imageName;
 }
 
