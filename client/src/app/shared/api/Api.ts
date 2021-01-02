@@ -1,10 +1,10 @@
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import Product, { parseProduct, parseProducts } from 'dorflaedeli-product';
 import Cart, { parseCart } from 'dorflaedeli-cart';
 
 const baseURL = 'http://localhost:8080';
 
-const axiosInstance = axios.create({ baseURL });
+const axiosInstance: AxiosInstance = axios.create({ baseURL });
 
 class Api {
   static getProducts = async (): Promise<Product[] | undefined> => {
