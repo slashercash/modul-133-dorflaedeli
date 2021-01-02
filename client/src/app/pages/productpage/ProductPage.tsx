@@ -50,7 +50,7 @@ const ProductPage = ({ match }: IProductPage) => {
         <img src={imageUrl} />
         <div>
           <div>
-            <h1 className="product-name">{product?.productName}</h1>
+            <h1>{product?.productName}</h1>
             <p>{product?.description}</p>
             <Button
               buttonText="Zum Warenkorb hinzufügen"

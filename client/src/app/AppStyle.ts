@@ -13,6 +13,10 @@ const AppStyle = createGlobalStyle`
   body {
     margin: 2vw;
   }
+
+  h1 {
+    color: #6d963b;
+  }
 `;
 
 export default AppStyle;

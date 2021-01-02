@@ -20,10 +20,7 @@ const CartPage = () => {
     };
   }, []);
 
-  if (!cart) return null;
-  if (cart.elements.length === 0) return <h1>Ihr Warenkorb ist leer</h1>;
-
-  const cartRows = cart.elements.map((cartElement: CartElement) => (
+  const cartRows = cart?.elements.map((cartElement: CartElement) => (
     <CartListRow
       key={cartElement.productId}
       cartElement={cartElement}
@@ -42,16 +39,24 @@ const CartPage = () => {
     <React.Fragment>
       <CartPageStyle>
         <h1>Warenkorb</h1>
-        <div className="cart-list-header">
-          <strong>Produkt</strong>
-          <div>
-            <strong>Einzelpreis</strong>
-            <strong>Anzahl</strong>
-            <strong>Total</strong>
-          </div>
-        </div>
-        {cartRows}
-        <strong>CHF {cart.totalCartPrice.toFixed(2)}</strong>
+        <table>
+          <thead>
+            <tr>
+              <th>Produkt</th>
+              <th>Einzelpreis</th>
+              <th>Anzahl</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>{cartRows}</tbody>
+          <tfoot>
+            <tr>
+              <td>
+                <strong>CHF {cart?.totalCartPrice.toFixed(2)}</strong>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
       </CartPageStyle>
     </React.Fragment>
   );

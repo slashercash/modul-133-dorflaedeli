@@ -32,11 +32,6 @@ const ProductPageStyle = styled.div`
     }
   }
 
-  .product-name {
-    color: #6d963b;
-    font-size: 30px;
-  }
-
   p {
     margin: 15px 0;
   }
