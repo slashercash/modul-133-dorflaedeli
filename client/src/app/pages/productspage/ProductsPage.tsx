@@ -34,7 +34,10 @@ const ProductsPage = () => {
   return (
     <React.Fragment>
       <ProductsPageStyle>
-        <ButtonLink to="/cart" buttonText={'Warenkorb: CHF ' + totalCartPrice.toFixed(2)} />
+        <section className="navigation">
+          <h1>Produkte</h1>
+          <ButtonLink to="/cart" buttonText={'Warenkorb: CHF ' + totalCartPrice.toFixed(2)} />
+        </section>
         <div className="products">{uiProducts}</div>
       </ProductsPageStyle>
     </React.Fragment>

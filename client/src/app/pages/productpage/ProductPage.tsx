@@ -43,15 +43,21 @@ const ProductPage = ({ match }: IProductPage) => {
   return (
     <React.Fragment>
       <ProductPageStyle>
-        <ButtonLink to="/cart" buttonText={'Warenkorb: CHF ' + totalCartPrice.toFixed(2)} />
-        <section>
+        <section className="navigation">
+          <h1>{product?.productName}</h1>
+          <ButtonLink to="/cart" buttonText={'Warenkorb: CHF ' + totalCartPrice.toFixed(2)} />
+        </section>
+        <section className="product-view">
           <img src={imageUrl} />
           <div>
             <div>
-              <h1>{product?.productName}</h1>
+              <div className="product-price">
+                <div className="special">CHF {product?.specialOffer.toFixed(2)}</div>
+                <div className="normal">CHF {product?.normalPrice.toFixed(2)}</div>
+              </div>
               <p>{product?.description}</p>
               <Button
-                buttonText="Zum Warenkorb hinzufügen"
+                buttonText={'Zum Warenkorb hinzufügen: + CHF ' + product?.specialOffer.toFixed(2)}
                 onClick={async () => {
                   await Api.putCartElement(product.id);
                   setTotalCartPrice((await Api.getCart()).totalCartPrice);

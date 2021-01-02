@@ -8,27 +8,21 @@ interface IUiProduct {
   product: Product;
 }
 
-const UiProduct = ({ product }: IUiProduct) => {
-  const imageUrl: string = Api.getImageUrl(product.imageName);
-  const normalPrice: string = 'CHF ' + product.normalPrice.toFixed(2);
-  const specialOffer: string = 'CHF ' + product.specialOffer.toFixed(2);
-
-  return (
-    <React.Fragment>
-      <UiProductStyle>
-        <Link to={'/products/' + product.id}>
-          <div className="product">
-            <img src={imageUrl} />
-            <div className="product-name">{product.productName}</div>
-            <div className="product-price">
-              <div className="special">{specialOffer}</div>
-              <div className="normal">{normalPrice}</div>
-            </div>
+const UiProduct = ({ product }: IUiProduct) => (
+  <React.Fragment>
+    <UiProductStyle>
+      <Link to={'/products/' + product.id}>
+        <div className="product">
+          <img src={Api.getImageUrl(product.imageName)} />
+          <div className="product-name">{product.productName}</div>
+          <div className="product-price">
+            <div className="special">CHF {product.specialOffer.toFixed(2)}</div>
+            <div className="normal">CHF {product.normalPrice.toFixed(2)}</div>
           </div>
-        </Link>
-      </UiProductStyle>
-    </React.Fragment>
-  );
-};
+        </div>
+      </Link>
+    </UiProductStyle>
+  </React.Fragment>
+);
 
 export default UiProduct;

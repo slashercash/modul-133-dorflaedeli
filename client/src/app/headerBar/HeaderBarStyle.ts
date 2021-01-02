@@ -25,7 +25,7 @@ const HeaderBarStyle = styled.header`
       color: #6d963b;
       border-radius: 0 3vw 3vw 0;
       width: 71%;
-      box-shadow: 0 0 5px #6d963b inset;
+      box-shadow: 0 0 8px black inset;
     }
 
     &:hover {

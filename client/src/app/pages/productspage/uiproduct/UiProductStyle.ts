@@ -27,16 +27,6 @@ const UiProductStyle = styled.div`
     font-weight: bold;
     margin-bottom: 10px;
   }
-
-  .product-price {
-    display: flex;
-  }
-
-  .normal {
-    margin-left: 10px;
-    color: red;
-    text-decoration: line-through;
-  }
 `;
 
 export default UiProductStyle;

@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
 const CartPageStyle = styled.main`
-  h1 {
-    margin: 20px 0 20px 10px;
-  }
-
   table {
     width: 100%;
     border-collapse: collapse;

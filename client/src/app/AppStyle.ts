@@ -10,6 +10,16 @@ const AppStyle = createGlobalStyle`
     color: #6d963b;
   }
 
+  .product-price {
+    display: flex;
+
+    > .normal {
+      margin-left: 10px;
+      color: red;
+      text-decoration: line-through;
+    }
+  }
+
   html {
     font-family: 'Arial';
     height: 100%;
@@ -40,6 +50,21 @@ const AppStyle = createGlobalStyle`
           box-sizing: border-box;
           background-color: white;
           box-shadow: 0 -50px 50px black;
+
+          > .navigation {
+            display: flex;
+            flex-wrap: wrap-reverse;
+            justify-content: space-between;
+            padding: 10px 10px;
+
+            > h1 {
+              margin: auto 0 ;
+            }
+            > .button-link {
+              margin: auto 0 ;
+              padding: 10px 0;
+            }
+          }
         }
       }
     }

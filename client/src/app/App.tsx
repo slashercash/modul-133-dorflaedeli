@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import ProductsPage from './pages/productspage/ProductsPage';
 import ProductPage from './pages/productpage/ProductPage';
 import CartPage from './pages/cartpage/CartPage';
+import CheckoutPage from './pages/checkoutpage/CheckoutPage';
 
 const App = () => (
   <React.Fragment>
@@ -18,6 +19,7 @@ const App = () => (
         <Route exact path="/products" component={ProductsPage} />
         <Route exact path="/products/:id" component={ProductPage} />
         <Route exact path="/cart" component={CartPage} />
+        <Route exact path="/checkout" component={CheckoutPage} />
       </Switch>
     </Router>
   </React.Fragment>

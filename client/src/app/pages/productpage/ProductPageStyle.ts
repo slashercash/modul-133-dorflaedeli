@@ -1,15 +1,11 @@
 import styled from 'styled-components';
 
 const ProductPageStyle = styled.main`
-  .button-link {
-    margin: 15px 10px 15px auto;
-  }
-
   p {
     margin: 15px 0;
   }
 
-  > section {
+  > .product-view {
     display: flex;
     flex-wrap: wrap;
     > img,
@@ -23,13 +19,17 @@ const ProductPageStyle = styled.main`
     }
   }
 
-  @media (max-width: 700px) {
-    > section {
+  @media (max-width: 800px) {
+    > .product-view {
       > img,
       > div {
         width: 100%;
         > div {
+          width: 100%;
           margin-left: 0;
+          button {
+            width: 100%;
+          }
         }
       }
     }

@@ -3,6 +3,7 @@ import Api from '../../shared/api/Api';
 import Cart, { CartElement } from 'dorflaedeli-cart';
 import CartPageStyle from './CartPageStyle';
 import CartListRow from './cartlistrow/CartListRow';
+import ButtonLink from '../../shared/components/buttonlink/ButtonLink';
 
 const CartPage = () => {
   const [cart, setCart] = useState((): Cart | undefined => undefined);
@@ -38,7 +39,10 @@ const CartPage = () => {
   return (
     <React.Fragment>
       <CartPageStyle>
-        <h1>Warenkorb</h1>
+        <section className="navigation">
+          <h1>Warenkorb</h1>
+          <ButtonLink to="/checkout" buttonText={'Bezahlen: CHF ' + cart?.totalCartPrice.toFixed(2)} />
+        </section>
         <table>
           <thead>
             <tr>
