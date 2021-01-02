@@ -1,6 +1,7 @@
 import React from 'react';
 import { CartElement } from 'dorflaedeli-cart';
 import Button from '../../../shared/components/button/Button';
+import { Link } from 'react-router-dom';
 
 interface ICartListRow {
   cartElement: CartElement;
@@ -11,7 +12,9 @@ interface ICartListRow {
 const CartListRow = ({ cartElement, onCountAdd, onCountSub }: ICartListRow) => (
   <React.Fragment>
     <tr>
-      <td>{cartElement.productName}</td>
+      <td>
+        <Link to={'/products/' + cartElement.productId}>{cartElement.productName}</Link>
+      </td>
       <td>CHF {cartElement.singlePrice.toFixed(2)}</td>
       <td>
         <Button buttonText="-" onClick={onCountSub} />

@@ -25,6 +25,12 @@ const CartPageStyle = styled.div`
         border-radius: 0 0 10px 10px;
       }
       > td {
+        a {
+          color: black;
+          &:hover {
+            color: orange;
+          }
+        }
         button {
           display: block;
           width: 32px;
