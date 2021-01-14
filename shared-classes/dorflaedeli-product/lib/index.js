@@ -19,7 +19,7 @@ var parseProduct = function (json) {
         var iProduct = json;
         if (typeof iProduct.id !== 'string' ||
             typeof iProduct.productName !== 'string' ||
-            typeof iProduct.specialOffer !== 'number' ||
+            (typeof iProduct.specialOffer !== 'number' && iProduct.specialOffer !== null) ||
             typeof iProduct.normalPrice !== 'number' ||
             typeof iProduct.imageName !== 'string' ||
             typeof iProduct.description !== 'string') {

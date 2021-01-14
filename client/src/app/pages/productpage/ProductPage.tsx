@@ -3,6 +3,7 @@ import Api from '../../shared/api/Api';
 import Product from 'dorflaedeli-product';
 import ProductPageStyle from './ProductPageStyle';
 import ButtonLink from '../../shared/components/buttonlink/ButtonLink';
+import Pricetag from '../../shared/components/pricetag/Pricetag';
 import Button from '../../shared/components/button/Button';
 
 const getData = async (productId: string): Promise<{ product: Product; totalCartPrice: number; imageUrl: string }> => {
@@ -10,6 +11,11 @@ const getData = async (productId: string): Promise<{ product: Product; totalCart
   const totalCartPrice: number = (await Api.getCart()).totalCartPrice;
   const imageUrl: string = Api.getImageUrl(product.imageName);
   return { product, totalCartPrice, imageUrl };
+};
+
+const getPrice = (normalPrice: number, specialOffer: number) => {
+  const price = normalPrice ? normalPrice : specialOffer ? specialOffer : 0;
+  return price.toFixed(2);
 };
 
 interface IProductPage {
@@ -51,13 +57,10 @@ const ProductPage = ({ match }: IProductPage) => {
           <img src={imageUrl} />
           <div>
             <div>
-              <div className="product-price">
-                <div className="special">CHF {product?.specialOffer.toFixed(2)}</div>
-                <div className="normal">CHF {product?.normalPrice.toFixed(2)}</div>
-              </div>
+              <Pricetag normalPrice={product?.normalPrice} specialOffer={product?.specialOffer} />
               <p>{product?.description}</p>
               <Button
-                buttonText={'Zum Warenkorb hinzufügen: + CHF ' + product?.specialOffer.toFixed(2)}
+                buttonText={'Zum Warenkorb hinzufügen: + CHF ' + getPrice(product?.normalPrice, product?.specialOffer)}
                 onClick={async () => {
                   await Api.putCartElement(product.id);
                   setTotalCartPrice((await Api.getCart()).totalCartPrice);

@@ -8,8 +8,8 @@ class Logic {
     cart.elements.forEach((element: CartElement) => {
       const product: Product = products.find((product: Product) => element.productId === product.id);
       element.productName = product.productName;
-      element.singlePrice = product.specialOffer;
-      element.totalPrice = product.specialOffer * element.count;
+      element.singlePrice = product.specialOffer ?? product.normalPrice;
+      element.totalPrice = element.singlePrice * element.count;
     });
 
     cart.totalCartPrice = cart.elements.reduce((total: number, element: CartElement) => total + element.totalPrice, 0);

@@ -10,16 +10,6 @@ const AppStyle = createGlobalStyle`
     color: #6d963b;
   }
 
-  .product-price {
-    display: flex;
-
-    > .normal {
-      margin-left: 10px;
-      color: red;
-      text-decoration: line-through;
-    }
-  }
-
   html {
     font-family: 'Arial';
     height: 100%;

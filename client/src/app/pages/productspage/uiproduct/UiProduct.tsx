@@ -3,6 +3,7 @@ import Product from 'dorflaedeli-product';
 import Api from '../../../shared/api/Api';
 import UiProductStyle from './UiProductStyle';
 import { Link } from 'react-router-dom';
+import Pricetag from '../../../shared/components/pricetag/Pricetag';
 
 interface IUiProduct {
   product: Product;
@@ -15,10 +16,7 @@ const UiProduct = ({ product }: IUiProduct) => (
         <div className="product">
           <img src={Api.getImageUrl(product.imageName)} />
           <div className="product-name">{product.productName}</div>
-          <div className="product-price">
-            <div className="special">CHF {product.specialOffer.toFixed(2)}</div>
-            <div className="normal">CHF {product.normalPrice.toFixed(2)}</div>
-          </div>
+          <Pricetag normalPrice={product.normalPrice} specialOffer={product.specialOffer} />
         </div>
       </Link>
     </UiProductStyle>
