@@ -31,3 +31,29 @@ If you want to develop on the client, you can make advantage of autorefreshing y
 2. At least build your server: `npm run build:server`
 3. Start your application in dev-mode: `npm run dev:client`
 4. Your browser should pop up automatically on http://localhost:8090/.
+
+# Screenshots
+
+## Products
+
+|                            Desktop                            |                                Mobile                                 |
+| :-----------------------------------------------------------: | :-------------------------------------------------------------------: |
+| ![Products](./_readme_images/screenshot_products_desktop.png) | ![Products - Mobile](./_readme_images/screenshot_products_mobile.png) |
+
+## Productdetail
+
+|                                 Desktop                                 |                                     Mobile                                      |
+| :---------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
+| ![Productdetail](./_readme_images/screenshot_productdetail_desktop.png) | ![Productdetail - Mobile](./_readme_images/screenshot_productdetail_mobile.png) |
+
+## Chart
+
+|                         Desktop                         |                             Mobile                              |
+| :-----------------------------------------------------: | :-------------------------------------------------------------: |
+| ![Chart](./_readme_images/screenshot_chart_desktop.png) | ![Chart - Mobile](./_readme_images/screenshot_chart_mobile.png) |
+
+## Checkout
+
+|                            Desktop                            |                                Mobile                                 |
+| :-----------------------------------------------------------: | :-------------------------------------------------------------------: |
+| ![Checkout](./_readme_images/screenshot_checkout_desktop.png) | ![Checkout - Mobile](./_readme_images/screenshot_checkout_mobile.png) |
